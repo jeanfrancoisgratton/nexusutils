@@ -1,11 +1,11 @@
 %define debug_package   %{nil}
 %define _build_id_links none
-%define _name nxrmutils
+%define _name nexusutils
 %define _prefix /opt
 %define _version 1.00.00
 %define _rel 0
 %define _arch x86_64
-%define _binaryname nxrmutils
+%define _binaryname nexusutils
 
 Name:       nxrmutils
 Version:    %{_version}
@@ -14,7 +14,7 @@ Summary:    Repository management
 
 Group:      Repository Management
 License:    GPL2.0
-URL:        https://git.famillegratton.net:3000/devops/nxrmutils
+URL:        https://git.famillegratton.net:3000/devops/nexusutils
 
 Source0:    %{name}-%{_version}.tar.gz
 BuildArchitectures: x86_64

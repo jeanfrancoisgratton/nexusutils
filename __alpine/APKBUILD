@@ -1,12 +1,12 @@
 # Maintainer: J.F.Gratton <jean-francois@famillegratton.net>
 # Packager: Package builder <builder@famillegratton.net>
-pkgname=nxrmutils
+pkgname=nexusutils
 pkgver=1.00.00
 pkgrel=0
 pkgdir=/data/packages
 builddir="$startdir/src/BUILD"
 pkgdesc="Repository management"
-url="https://github.com/jeanfrancoisgratton/nxrmutils"
+url="https://github.com/jeanfrancoisgratton/nexusutils"
 arch=x86_64
 license=GPL2
 #depends="gcompat"

@@ -4,6 +4,13 @@
 
 package env
 
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
 var EnvConfigFile string
 
 type NXRMinfo struct {
@@ -11,4 +18,12 @@ type NXRMinfo struct {
 	URL      string `json:"url"`
 	Username string `json:"username"`
 	Password string `json:"password"`
+}
+
+func getStringVal(prompt string) string {
+	fmt.Print(prompt)
+	inputVal := bufio.NewReader(os.Stdin)
+	input, _ := inputVal.ReadString('\n')
+
+	return strings.TrimSpace(input)
 }

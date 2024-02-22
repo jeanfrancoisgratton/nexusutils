@@ -1,18 +1,18 @@
-// nxrmutils
+// nexusutils
 // src/cmd/root.go
 
 package cmd
 
 import (
 	"github.com/spf13/cobra"
-	"nxrmutils/env"
-	"nxrmutils/helpers"
+	"nexusutils/env"
+	"nexusutils/helpers"
 	"os"
 )
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:     "nxrmutils",
+	Use:     "nexusutils",
 	Short:   "Various tools to manage users, blobs, repos, etc",
 	Version: "1.00.00-0 (2024.02.19)",
 	Long: `This tools allows you to manage components in Nexus Repository Manager.

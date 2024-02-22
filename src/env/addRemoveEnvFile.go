@@ -7,6 +7,7 @@ package env
 import (
 	"encoding/json"
 	"fmt"
+	"nexusutils/helpers"
 	"os"
 	"path/filepath"
 	"strings"
@@ -17,10 +18,10 @@ func RemoveEnvFile(envfiles []string) error {
 		if !strings.HasSuffix(envfile, ".json") {
 			envfile += ".json"
 		}
-		if err := os.Remove(filepath.Join(os.Getenv("HOME"), ".config", "JFG", "nxrmutils", envfile)); err != nil {
+		if err := os.Remove(filepath.Join(os.Getenv("HOME"), ".config", "JFG", "nexusutils", envfile)); err != nil {
 			return err
 		}
-		if err := os.Remove(filepath.Join(os.Getenv("HOME"), ".config", "JFG", "nxrmutils", envfile)); err != nil {
+		if err := os.Remove(filepath.Join(os.Getenv("HOME"), ".config", "JFG", "nexusutils", envfile)); err != nil {
 			return err
 		}
 		fmt.Printf("%s removed succesfully\n", envfile)
@@ -50,6 +51,15 @@ func AddEnvFile(envfile string) error {
 func prompt4EnvironmentValues() NXRMinfo {
 	var env NXRMinfo
 
+	env.Name = getStringVal("Please enter the friendly repo name: ")
+
+	env.URL = getStringVal("Please enter the repo URL: ")
+	if !strings.HasSuffix(env.URL, "/") {
+		env.URL += "/"
+	}
+	env.Username = getStringVal("Please enter the username needed to login: ")
+	env.Password = helpers.EncodeString(helpers.GetPassword("Please enter that user's password: "))
+
 	return env
 }
 
@@ -60,7 +70,7 @@ func LoadEnvironmentFile() (NXRMinfo, error) {
 	if !strings.HasSuffix(EnvConfigFile, ".json") {
 		EnvConfigFile += ".json"
 	}
-	rcFile := filepath.Join(os.Getenv("HOME"), ".config", "JFG", "nxrmuploader", EnvConfigFile)
+	rcFile := filepath.Join(os.Getenv("HOME"), ".config", "JFG", "nexusutils", EnvConfigFile)
 	jFile, err := os.ReadFile(rcFile)
 	if err != nil {
 		return NXRMinfo{}, err
@@ -82,7 +92,7 @@ func (e NXRMinfo) SaveEnvironmentFile(outputfile string) error {
 	if err != nil {
 		return err
 	}
-	rcFile := filepath.Join(os.Getenv("HOME"), ".config", "JFG", "nxrmutils", outputfile)
+	rcFile := filepath.Join(os.Getenv("HOME"), ".config", "JFG", "nexusutils", outputfile)
 	err = os.WriteFile(rcFile, jStream, 0600)
 
 	return err

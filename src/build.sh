@@ -3,7 +3,7 @@
 
 
 if [ "$#" -gt 0 ]; then
-    BINARY=nxrmutils
+    BINARY=nexusutils
 fi
 
 go build -o /opt/bin/${BINARY} .
